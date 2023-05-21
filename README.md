@@ -19,3 +19,9 @@
 - If everything is fine with the setup, Then run the code.
 
 - <b>Note: </b> Enter Some Dummy data in the `employees` table
+
+
+### Setting up to google accound for retrinving the files
+- Login/Register to [Google console](console.cloud.google.com)
+- Create a new project 
+  - ![Step 1](http://drive.google.com/uc?export=view&id=1Y-9YLSZdymMXQ5w30tY_SDp8zBMRlQhk)
