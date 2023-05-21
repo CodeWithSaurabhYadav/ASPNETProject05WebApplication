@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Project05.bundle.scp.css"
     },
     {
+      "Id": "D:\\ASP.net\\Project05\\Project05\\wwwroot\\certificate.pdf",
+      "PackagePath": "staticwebassets\\certificate.pdf"
+    },
+    {
       "Id": "D:\\ASP.net\\Project05\\Project05\\wwwroot\\css\\BootsWatchTemplateMorph.css",
       "PackagePath": "staticwebassets\\css\\BootsWatchTemplateMorph.css"
     },

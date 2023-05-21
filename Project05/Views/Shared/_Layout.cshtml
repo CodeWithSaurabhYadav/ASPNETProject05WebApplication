@@ -23,11 +23,6 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <!------
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        ---->
                     </ul>
                 </div>
             </div>
@@ -36,7 +31,8 @@
 
     <div class="p-3">
         <div class="div-center">
-            <form method="post" action="/Home/Search">
+            @*<form method="post" action="/Home/Search">*@
+            <form method="post" action="/Search">
                 <div class="form-group row gap-3">
                     <label for="search" class="col-sm-2 col-form-label w-auto" >Enter Employee Id:</label>
                     <input type="text" id="search" name="search" required class="form-control" placeholder="Employee Id, eg: 1234">

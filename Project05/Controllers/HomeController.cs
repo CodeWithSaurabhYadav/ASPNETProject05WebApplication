@@ -17,15 +17,6 @@ namespace Project05.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Search()
-        {
-            string searchString = Request.Form["search"];
-            TempData["EmployeeID"] = searchString;
-            return RedirectToAction("Index","Search");
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

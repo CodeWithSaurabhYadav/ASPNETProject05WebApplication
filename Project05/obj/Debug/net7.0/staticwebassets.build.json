@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "i6gAToOCKaufHnT5sCGpMg0zNCq6b5ZLaDHRkH/8Mxs=",
+  "Hash": "gaNxnuaV5BOH4yMYW9AgmHNGX2cUlPw7mNf7Ycd1ct4=",
   "Source": "Project05",
   "BasePath": "_content/Project05",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ASP.net\\Project05\\Project05\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Project05.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\ASP.net\\Project05\\Project05\\wwwroot\\certificate.pdf",
+      "SourceId": "Project05",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASP.net\\Project05\\Project05\\wwwroot\\",
+      "BasePath": "_content/Project05",
+      "RelativePath": "certificate.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\certificate.pdf"
     },
     {
       "Identity": "D:\\ASP.net\\Project05\\Project05\\wwwroot\\css\\BootsWatchTemplateMorph.css",

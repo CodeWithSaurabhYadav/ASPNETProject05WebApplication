@@ -1,33 +1,121 @@
 ﻿@model IEnumerable<EmployeeModel>
 @{
+    <!-- The `ViewData["Title"]` property is used to set the title of the page. -->
     ViewData["Title"] = "Employee Data";
     var employeeID = int.Parse(ViewBag.Message);
     var employeeStatus = false;
+    var count = 0;
 }
-
-<table class="table table-striped">
-    @foreach (var item in Model)
-    {
-        if (employeeID == item.EmpId)
-        {
-            employeeStatus = true;
-            <tr>
-                <td>@item.EmpId</td>
-                <td>@item.EmpName</td>
-                <td>@item.Address</td>
-            </tr>
-            break;
+<!-- This code displays a table of employee data. -->
+<div class="container">
+    <table class="table table-striped">
+        @try{
+            @foreach (var item in Model)
+            {
+                if (employeeID == item.EmpId)
+                {
+                    employeeStatus = true;
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>@item.EmpId</td>
+                        <td>@item.EmpName</td>
+                        <td>@item.Address</td>
+                    </tr>
+                    </tbody>
+                    <!-- If there are files to display, they are displayed in the table. -->
+                    break;
+                }
+                else
+                {
+                    employeeStatus = false;
+                }
+            }
+            @if (!employeeStatus)
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <h4 class="alert-heading">Not Found!</h4>
+                    Oh! <strong>The employee detail, you are searching for does not exixt.</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
         }
-        else
+        catch (InvalidOperationException)
         {
-            employeeStatus = false;
+            <div class="alert alert-dismissible alert-danger">
+                <h4 class="alert-heading">Connection Error!</h4>
+                Oh! <strong>Unable to connect to server. Please check you Internet.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        <!-- The `script` tag loads the `pdfobject.min.js` file. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.11/pdfobject.min.js" integrity="sha512-Ei1WlhMCjToeHGX4Dc2GvcnQqXiLNoNJA7BCSpKNd+Epg+3zxSpllzvub5lTrIOZs+CqyFjzkOiW7JadQ8qdog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- This file is used to display PDF files in the browser. -->
+    </table>
+</div>
+@if (employeeStatus){
+    @if (ViewBag.Files.Count > 0){
+        <h3 class="text-center">Images:</h3>
+        <div class="myContainer">
+            @ViewBag.Files.Count
+            @for (var i = 0; i < ViewBag.array.Length; i++)
+            {
+                var divId = "viewFile" + i;
+                switch (@ViewBag.array[i])
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                    case ".png":
+                        var URL = "http://drive.google.com/uc?export=view&id=" + ViewBag.Files[i].Id;
+                        <img class="imgStyle" src="@URL" alt="@ViewBag.Files[i].Name loading....">
+                        break;
+                }
+            }
+        </div>
+        <h3 class="text-center">PDF Documents:</h3>
+        <div class="myContainer">
+            @for (var i = 0; i < ViewBag.array.Length; i++)
+            {
+                var divId = "viewFile" + i;
+                switch (@ViewBag.array[i])
+                {
+                    case ".pdf":
+                            <div id="@divId" class="pdfContainer"></div>
+                        break;
+                }
+            }
+        </div>
+        @if (employeeStatus)
+        {
+            @for (var i = 0; i < ViewBag.array.Length; i++)
+            {
+                var targetDivId = "viewFile" + i;
+                switch (@ViewBag.array[i])
+                {
+                    case ".pdf":
+                        var URL = "https://drive.google.com/file/d/" + ViewBag.Files[i].Id + "/preview";
+                        <script>
+                            PDFObject.embed("@URL", "#@targetDivId");
+                        </script>
+                        break;
+                }
+            }
         }
     }
-    @if(!employeeStatus){
+    else
+    {
+        <!-- If there are no files to display, an error message is displayed. -->
         <div class="alert alert-dismissible alert-danger">
-            <h4 class="alert-heading">Not Found!</h4>
-            Oh! <strong>The employee detail, you are searching for does not exixt.</strong>
+            <h4 class="alert-heading">Files Not Found!</h4>
+            Oh! <strong>The employee files are not available.</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     }
-</table>
+}

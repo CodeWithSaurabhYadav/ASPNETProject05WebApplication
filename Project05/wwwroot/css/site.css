@@ -33,3 +33,51 @@ body {
     align-content: center;
     align-items: center;
 }
+
+.myContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgStyle {
+    border: 2px solid black;
+    border-radius: 12px;
+    width: 15rem;
+    height: 15rem;
+    transition: 300ms ease-in-out;
+}
+
+.imgStyle:hover {
+    transform: scale(1.01);
+}
+
+.pdfContainer {
+    width: 400px;
+    aspect-ratio: 3/4;
+}
+
+.pdfContainer * {
+    border-radius: 12px;
+    transition: 300ms ease-in-out;
+}
+
+.pdfContainer *:hover {
+    border-radius: 12px;
+    transform: scale(1.01);
+}
+
+
+.ndfHFb-c4YZDc-q77wGc{
+    display: none;
+}
+
+@media screen and (max-width: 670px){
+    .pdfContainer{
+        height: 80px;
+        max-width: 100%;
+    }
+}
